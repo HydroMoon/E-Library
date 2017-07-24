@@ -95,5 +95,16 @@
     <string name="search_first">Search first</string>
     <string name="version">Version 1.1.0 (21/7/2017)</string>
     <string name="fixes">- Fixed arabic translation\n- Fixed notification service</string>
+    <string name="snd">Send</string>
+    <string name="dofanoti">Uni Notification</string>
+    <string name="addnoti">Please add a notification</string>
+    <string name="plzsndnoti">Preparing to send the notification</string>
+    <string name="fldtosnd">Failed to send notification</string>
+    <string name="notisndcmp">Notification send successfuly</string>
+    <string name="fldtodeltempfile">Failed to delete temp file</string>
+    <string name="sndfld">Send failed</string>
+    <string name="errrnamenoti">Error in renaming file</string>
+    <string name="filentfound">File not found</string>
+    <string name="fldtochcknoti">Failed to check notification</string>
 
 </resources>

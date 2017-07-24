@@ -237,14 +237,14 @@ public class MainActivity extends AppCompatActivity implements inter {
     private void showDialog () {
         final EditText jscst = new EditText(MainActivity.this);
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("أشعارات الدفعة")
+        builder.setTitle(getString(R.string.dofanoti))
                 .setView(jscst)
-                .setPositiveButton("ارسال", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.snd), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setNegativeButton("الغاء", null);
+                .setNegativeButton(getString(R.string.dwncncl), null);
         final AlertDialog dialog = builder.create();
         dialog.show();
 
@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements inter {
             public void onClick(View v) {
                 final String jscstText = String.valueOf(jscst.getText());
                 if (jscstText.length() == 0) {
-                    Toast.makeText(MainActivity.this, "الرجاء اضافة اشعار", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.addnoti), Toast.LENGTH_LONG).show();
                 } else {
                     dialog.dismiss();
                     PrepareToSendCollageNotification(jscstText, MainActivity.this);
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements inter {
 
     private void PrepareToSendCollageNotification(String jscstText, Context c) {
         //progressDialog2  Is public
-        progressDialog2 = ProgressDialog.show(c,null,"جاري ارسال الاشعار الرجاء الانتظار",false,false);
+        progressDialog2 = ProgressDialog.show(c, null, getString(R.string.plzsndnoti), false, false);
         try {
             String PathOfFile =Environment.getExternalStorageDirectory() + File.separator +  "jscst.txt";
             File CreatePathFile = new File(PathOfFile);
@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements inter {
                 new CheckForTheLastCollageNotification().execute(CreatePathFile.getName(), Path);
             } else {
                 progressDialog2.dismiss();
-                Toast.makeText(c,"فشل في ارسال اشعارات الدفعة",Toast.LENGTH_LONG).show();
+                Toast.makeText(c, getString(R.string.fldtosnd), Toast.LENGTH_LONG).show();
             }
         } catch (FileNotFoundException e) {
             Toast.makeText(c,"File Not Found",Toast.LENGTH_LONG).show();
@@ -316,16 +316,16 @@ public class MainActivity extends AppCompatActivity implements inter {
                         if (SuccessToSendFile) {
                             boolean del = to.delete();
                             if (del) {
-                                return "تم ارسال الاشعار";
+                                return getString(R.string.notisndcmp);
                             }else
-                                return "تم ارسال الاشعار" + "فشل في مسح الملف المؤقت";
+                                return getString(R.string.notisndcmp) + " " + getString(R.string.fldtodeltempfile);
                         } else
-                            return "فشل الارسال";
+                            return getString(R.string.sndfld);
                     } else {
-                        return "خطا في اعادة تسيمة الملف";
+                        return getString(R.string.errrnamenoti);
                     }
                 } else
-                    return "لم يتم ايجاد الملف";
+                    return getString(R.string.filentfound);
 
             } catch (IOException e) {
                 new File(params[1] + params[0]).delete();
@@ -337,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements inter {
         protected void onPostExecute(String s) {
             progressDialog2.dismiss();
             if (s == null) {
-                Toast.makeText(getApplicationContext(), "Flied To Check Last Number Of Collage Notification", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.fldtochcknoti, Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(getApplicationContext(),s, Toast.LENGTH_LONG).show();
             }

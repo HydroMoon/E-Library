@@ -86,4 +86,15 @@
     <string name="version">النسخة 1.1.0 (21/7/2017)</string>
     <string name="search_first">ابحث اولا</string>
     <string name="fixes">- تم اصلاح اللغة العربية\n- تم اصلاح الاشعارات</string>
+    <string name="snd">ارسال</string>
+    <string name="dofanoti">اشعارات الدفعة</string>
+    <string name="addnoti">الرجاء اضافة اشعار</string>
+    <string name="plzsndnoti">جاري ارسال الاشعار الرجاء الانتظار</string>
+    <string name="errrnamenoti">خطا في اعادة تسيمة الملف</string>
+    <string name="filentfound">لم يتم ايجاد الملف</string>
+    <string name="fldtodeltempfile">فشل في مسح الملف المؤقت</string>
+    <string name="fldtosnd">فشل ارسال الإشعار</string>
+    <string name="notisndcmp">تم ارسال الإشعار</string>
+    <string name="sndfld">فشل الارسال</string>
+    <string name="fldtochcknoti">حدث خطاء في التأكد من الإشعارات</string>
 </resources>
