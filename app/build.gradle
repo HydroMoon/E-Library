@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.0'
+    defaultConfig {
+        applicationId "com.hydro.library"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 3
+        versionName "1.0.9"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        developer {
+            minSdkVersion 15
+            applicationId 'com.hydro.library.dev'
+            targetSdkVersion 26
+            versionCode 3
+            versionName '1.0.9_dev'
+        }
+        user {
+            minSdkVersion 15
+            applicationId 'com.hydro.library.user'
+            targetSdkVersion 26
+            versionCode 3
+            versionName '1.0.9_user'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/commons-net-3.6.jar')
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.android.support:support-v4:26.0.0-alpha1'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+}

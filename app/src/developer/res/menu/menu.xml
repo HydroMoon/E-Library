@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.hydro.library.MainActivity" >
+
+    <item
+        android:title="@string/setting"
+        android:id="@+id/about"
+        android:orderInCategory="4"
+        app:showAsAction="never" />
+
+
+
+    <item
+        android:title="@string/upload"
+        android:icon="@drawable/ic_upload"
+        android:id="@+id/uploadfiles"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:title="@string/exit"
+        android:id="@+id/exit"
+        android:orderInCategory="6"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/notification_setting"
+        android:id="@+id/notification"
+        android:orderInCategory="2"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/change_username"
+        android:id="@+id/setUser"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/update"
+        android:id="@+id/update"
+        android:orderInCategory="5"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/cnct"
+        android:id="@+id/connect"
+        android:icon="@drawable/ic_bell"
+        android:orderInCategory="0"
+        app:showAsAction="ifRoom" />
+
+</menu>

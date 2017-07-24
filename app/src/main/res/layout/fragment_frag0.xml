@@ -1,0 +1,131 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hydro.library.Frag0">
+
+
+    <TextView
+        android:id="@+id/jord"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/uni_name"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:id="@+id/jord2"
+        android:text="@string/spec_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/jord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="normal|bold" />
+    <TextView
+        android:id="@+id/jord3"
+        android:text="@string/year_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/jord2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="normal|bold" />
+
+    <RelativeLayout
+        android:layout_below="@+id/jord3"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/sub"
+            android:text="@string/sub_name"
+            android:textSize="17sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal|bold" />
+
+        <Spinner
+            android:layout_marginTop="1dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="35dp"
+            android:layout_below="@id/sub"
+            android:id="@+id/spinner" />
+
+        <TextView
+            android:id="@+id/sub1"
+            android:text="@string/sub_type"
+            android:textSize="17sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/spinner"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal|bold" />
+
+        <Spinner
+            android:layout_marginTop="1dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="35dp"
+            android:layout_below="@id/sub1"
+            android:id="@+id/spinner2" />
+
+        <Button
+            android:text="@string/tbn_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/button"
+            android:layout_below="@id/spinner2"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button"
+            android:id="@+id/textView"
+            android:padding="8dp"
+            android:background="@drawable/border"
+            />
+
+        <TextView
+            android:id="@+id/aboutus"
+            android:text="@string/created"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/textView"
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

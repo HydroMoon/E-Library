@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/OS"
+        android:id="@+id/os"
+        android:orderInCategory="1" />
+
+    <item
+        android:title="@string/DB"
+        android:id="@+id/db"
+        android:orderInCategory="2" />
+
+    <item
+        android:title="@string/CG"
+        android:id="@+id/cg"
+        android:orderInCategory="3" />
+
+    <item
+        android:title="@string/CN"
+        android:id="@+id/cn"
+        android:orderInCategory="4" />
+    <item
+        android:title="@string/OOAD"
+        android:id="@+id/ooad"
+        android:orderInCategory="5" />
+
+    <item
+        android:title="@string/OOP"
+        android:id="@+id/oop"
+        android:orderInCategory="6" />
+
+    <item
+        android:title="@string/SR"
+        android:id="@+id/ser"
+        android:orderInCategory="7" />
+
+</menu>

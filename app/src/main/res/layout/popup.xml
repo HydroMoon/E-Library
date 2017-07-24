@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+     >
+
+    <Button
+        android:id="@+id/popBtn1"
+        android:text="@string/Lec"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="170dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/popBtn2"
+        android:text="@string/lab"
+        android:layout_toRightOf="@+id/popBtn1"
+        android:layout_toEndOf="@+id/popBtn1"
+        android:layout_width="170dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/popBtn3"
+        android:text="@string/exam"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/popBtn1"
+        android:layout_width="170dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/popBtn4"
+        android:text="@string/oth"
+        android:layout_toRightOf="@+id/popBtn3"
+        android:layout_toEndOf="@+id/popBtn3"
+        android:layout_below="@+id/popBtn2"
+        android:layout_width="170dp"
+        android:layout_height="60dp" />
+
+</RelativeLayout>

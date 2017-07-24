@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="LibraryMaterial" parent="LibraryMaterial.Base">
+
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="LibraryMaterial.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="LibraryMaterial.PopupMenu" prent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/windowBackground</item>
+        <item name="android:textColor">@color/navigationBarColor</item>
+    </style>
+    
+    <style name="LibraryMaterial.Mohanad">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:theme">@style/AlertDialog.AppCompat.Light</item>
+    </style>
+    
+
+</resources>

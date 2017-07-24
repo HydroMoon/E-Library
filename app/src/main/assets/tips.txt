@@ -1,0 +1,960 @@
+﻿<0>لغة البرمجة (Programming language) : هي مجموعة من الأوامر، تكتب وفق قواعد تُحَدَّد بواسطة لغة البرمجة، ومن ثُمَّ تمر هذه الأوامر بعدة مراحل إلى أن تنفذ على جهاز الحاسوب
+<1>تعريف البرمجة بأنها عملية كتابة تعليمات وأوامر لجهاز الحاسوب أو أي جهاز آخر، لتوجيهه وإعلامه بكيفية التعامل مع البيانات أو كيفية تنفيذ سلسلة من الأعمال المطلوبة. تتبع عملية البرمجة قواعد خاصة باللغة التي اختارها المبرمج
+<2>المتغيرات (variable) هي عبارة عن حاويات لها حجم معين (كل نوع له حجم) تقوم بتخزين البيانات، تعد من أساسيات البرمجة ولايمكن لبرنامج أن يعمل من دونها، تتكون من عدة انواع لكل نوع حجم مخصص له في الذاكرة لايمكن أن يتجاوز هذا الحجم، إلا إذا كان يستخدم أنواع ديناميكية تستخدم معها المؤشرات
+<3>الثوابت هي اعطاء اسم لقيمة معينة ويستخدم داخل البرنامج  ، ولا يمكن تغيير هذه القيمة عند تنفيذ البرنامج
+<4>المتغير (byte) : وهو يمثل في جافا Byte واحدة ( 8 bits )، يستطيع تخزين من 128- إلى 127
+مثال : كان عمر الرسول صلى الله عليه وسلام عندما توفي 63 سنة، الرقم 63 ينتمي لمجال الأعداد في (byte)
+byte age = 63;
+<5> المتغير(short ) : يمثل 2 Bytes، يستطيع تخزين الأعداد الصحيحة من 32768- إلى 32767
+مثال : عدد عظام انسان بالغ هو 206 عظم، هذا العدد ينتمي ل-short لكنه لا ينتمي ل- byte
+short bones = 206;
+<6> المتغير (int) : ويمثل 4 Bytes يعني أنه يستطيع تخزين من 2147483648- إلى 2147483647
+مثال : مساحة الكرة الأرضية : 510066000 كم مريع، هذا العدد ينتمي ل-int لكنه لاينتمي ل-short أو byte
+int EarSurface = 510066000;
+<7> المتغير (long) : وهو نوع أخر من أنواع الأعداد الصحيحة يمكن تخزين الأعداد من 9223372036854775808- إلى 9223372036854775807
+مثال : حجم الكون المرئي هو : 15000000000000 سنة ضوئية :
+long UniVolume = 15000000000000;
+<8> المتغير (float) : يحوي الأعداد العشرية السالبة والموجبة في المجال : 1,4E-45 ... +/-3,4E+38 +/-
+مثال : العدد Pi يساوي : 3.14159
+float Pi = 3.14159;
+<9> المتغير (double) : هذا النوع يحوي الأعداد العشرية في المجال : 4,9E-324 ... +/-1,7E+308 +/-
+مثال : العدد 66.123456
+double Nr = 66.123456;
+<10> الحرف (char)  : هذا النوع يحوي الحروف ، ويتكون من 2 Bytes، يستطيع هذا النوع من البيانات تخزين حروف-Unicode جميعها، هذا التمثيل للحروف يسمى "UTF-16" وذلك لأنه يتكون من 2 Bytes أي 16 bits
+مثال : أول حرف من حروف اللغة الانجليزية هو A ، واخرها هو Z
+char FirstLetter = 'A';
+char LastLetter  = 'Z';
+<11>النوع المنطقي (boolean) نوع البيانات المنطقي هو نوع يقوم بتخزين قيمتين لا ثالث لهما : true أو false، يعني إما أن يكون هذا النوع صحيحاً أو خاطئاً. وهو لا يقبل أي قيم أخرى غير هاتين الكلمتين
+boolean a = true;
+boolean b = false;
+<12> شروط تسمية المتغيرات:
+1.متغير في جافا يمكن أن يبتدئ ب : $ أو _ أو بحرف، ولا يجب أن يبتدئ برقم .
+2.بعد كتابة الحرف الأول من المتغير، يمكنه أن يحتوي على أي حرف وأي رقم .
+3.% ، * ، @ هي عبارة عن رموز محجوزة لجافا ومن الأحسن تفاديها .
+4.لغة جافا تفرق ما بين الكتابة بحروف كبيرة وحروف صغيرة لهذا يرجى الإنتباه عند استخدمها .
+5.من الأحسن أن يكون للمتغير معنى وذلك لتوضيح الأمور بالنسبة للزبون .
+6.ان لا يكون اسم المتغير من الاسماء المحجوزة لدي النظام مثل (public) و (class) و هكذا
+<13>public class Example1 {
+public static void main(String[] args) {
+int a = 4;
+int b = 2;
+int c = a/b;  // هنا يتم الاسناد
+System.out.println(c);//c هنا يتم طباعة ما تم إسناده للمتغير
+ }
+}
+<14>public class Example2 {
+public static void main(String[] args) {
+int a = 4;
+int b = 2;
+a = b;   // هنا يتم الاسناد
+System.out.println(a);   // 2 هنا يتم طباعة
+ }
+}
+<15>البرمجة الكائنية (Object-Oriented Programming (OOP) :
+لغة تلتزم بقواعد البرمجة بواسطة الأهداف حيث وفرت كثير من الجهد الذي كان يبذل باستخدام البرمجة التقليدية ، حيث كانت البرمجة التقليدية توفر للمبرمج مكتبة من الدوال إضافة إلى تركيب تقليدي للبرنامج وعلى المبرمج أن يستعمل الدوال مع تركيب البرنامج لإنشاء التطبيقات مما يضطره لكتابة السطور الكثيرة أكثر من مرة ؛ لقد كانت وحدة بناء البرنامج هي الدالة .. في حين أتت البرمجة بواسطة الأهداف بفكرة جديدة هي إنشاء عناصر متكاملة تحتوي على بيانات ودوال هي أساس إنشاء البرنامج
+<16>الكلاس وهي عبارة عن البرنامج ككل او الوصف الرئيسي الذي تنحدر منه objects , وكل Object يتبع الى كلاس معينة
+1.Object: عبارة عن شئ له صفات واساليب معينة خاصة به
+2.Attribute: الصفات للكلاس وكمان ال object
+3.Methods: الاساليب المستخدمة في الكلاس
+<17>الفرق بين (void) و (String) في الدوال
+public void  getName(){
+null//لاترجع قيمة
+}
+public String getName()
+{
+return name; //ترجع قيمة
+}
+<18>الفرق بين كل من Android Studio و  Eclipse
+كانت بيئة Eclipse هي منصّة التطوير التي اعتمد عليها مطوّرو أندرويد بشكل رئيسي منذ انطلاق نظام التشغيل لتطوير تطبيقاتهم، لكن جوجل أطلقت لاحقًا بيئة Android Studio الأسهل استخدامًا والأكثر تطوّرًا، والتي تُقدّم للمطوّرين حزمة مُتكاملة من الأدوات التي تُساعدهم في تطوير تطبيقاتهم لمُختلف الأجهزة والشاشات بسهولة أكبر
+<19>المعاملات الحسابية (Arithmetic Operators):
+هي تلك المعاملات التي يتم استخدامها في العمليات الحسابية مثل الجمع والطرح والضرب والقسمة،..الخ من العمليات الحسابية المختلفة، ويتم تنفيذ تلك العمليات وفقاً لاولويات التنفيذ.
+<20>جملة if هي أبسط الجمل الشرطية فهي تحتوي على شرط، عند تحققه ينفذ أمر معين. تركيبتها كالتالي :
+public static void main(String[] args) {
+int age = 20;
+if (age >= 18)
+System.out.println("you are an Adult");
+}
+وفي المثال نسأل إن كان العمر أكبر من أو يساوي 18، في هذه الحالة العمر يساوي 20, إذاً الشرط محقق سيتم طباعة أن الشخص بالغ أو راشد، إن لم يتحقق الشرط ( مثلاً إن قمنا بإسناد قيمة 17 للمتغير age ) فسوف يتجاهل المترجم الجملة ولن ينفذ الأمر
+<21>جملة if else ما هي إلا إمتداد لجملة if بمعني اذا لم يتحقق شرط if فاستخدم شرط else
+int age = 17;
+if (age >= 18)
+System.out.println("you are an Adult!");
+else
+System.out.println("you are still young!");
+<22>نص : تعني String في البرمجة, و الـ String عبارة عن مجموعة من الأحرف
+String str=”Hello,World!!”;
+<23>والاختلاف بين النوعين char و String :
+أن الأول لتخزين حرف واحد فقط والثاني لنص كامل، ولاحظ أن علامتيَ الاقتباس مختلفة فلا يمكن استخدام "R" لتخزينها في متغير من النوع char لأنها داخل علامتيّ الاقتباس الخاصة بالنص
+<24>تنتهي الجمل في جافا بالفاصلة المنقوطة ";"
+<25>int result = x % y;
+تعني هذه العملية بباقي قسمة x على y
+<26>x++ :
+فهي تقوم بزيادة واحد على قيمة المتغير
+x=x+1
+<27>تستخدم && (كحرف العطف "و") للتعبير عن وجوب تحقق الشرطين معًا ليكون الناتج true ويكون false غير ذلك
+boolean result = a > b && a > c;
+<28>تستخدم || (كحرف العطف "أو") للتعبير عن تحقق إحدى الشرطين أو تحققهما معًا ليكون الناتج true ويكون الناتج false عندما يكون الشرطين غير متحققين معًا
+boolean result = a > b || a > c;
+<29>تعني ! عكس الناتج فإذا كان true يصبح false والعكس صحيح
+boolean result = !(a>b)
+<30>الجمل الشرطية
+هي الجمل التي تنفذ عند تحقق شرط معين ولتنفيذها يتم استخدام if و if-else و switch، وإذا لم يتحقق هذا الشرط لا يتم تنفيذها
+<31>جملة switch
+تستخدم هذه الجملة عندما نريد التحقق من قيمة متغير واحد فقط وتعتبر أكثر سهولة من if في هذه الحالة:
+switch(variable){
+case 1:
+  //Do something
+  break;
+case 2:
+  //Do something
+  break;
+default:
+  //Do something
+  break;
+}
+<32>الجمل الشرطية التكرارية
+ هي جمل تقوم بتنفيذ أوامر عدة مرات في حال كان الشرط صحيحًا، وتتشابه مع الجمل الشرطية في تركيبها وتختلف معها في عدد مرات تنفيذ الأمر مثل while و do While و for
+<33>الجملة while
+ويتم تنفيذ الأوامر داخل الجملة while طالما الشرط متحقق ويتم التوقف عندما يصبح الشرط خاطئًا
+int i = 0;
+int sum = 0;
+while( i < 5 ){
+  sum = sum + 1;
+  i++;
+}
+<34>الجملة for
+داخل القوسين الخاصين بالجملة for يتم تقسيمها إلى ثلاث أقسام تفصلهم الفاصلة المنقوطة ";" وأول قسم يتم به تهيئة المتغير إعطائه قيمة ابتدائية، والقسم الثاني الشرط المعتاد، والقسم الأخير خاص بتحديث الشرط
+for (initialization ; condition ; update){
+// Do Some Actions here
+}
+مثال :
+int sum =0;
+for(int i=0;i<5;i++){
+  sum = sum + 1;
+}
+<35>المصفوفة
+ھي عبارة عن تجمع بعض من العناصر المتشابھة فى النوع والمرتبطة معا بصفة مشتركة
+<36>ما هي الخوارزميات و لم يجب أن تتعلمها قبل أن تتعلم أي لغة برمجة ؟
+أول شيء يجب أن تعرفه هو أن الخوارزميات ليست لغة برمجة, إنما هي طريقة التفكير و التحليل التي عليك اتباعها حتى تتمكن من كتابة الكود بشكل صحيح
+<37>ما هي فكرة الدوال ؟
+فكرة الدوال أنك إذا أردت أن تنفذ نفس الكود عدة مرات في البرنامج. تكتب هذا الكود مرة واحدة فقط و تنادي له فقط كلما أردت تنفيذه
+<38>ماذا تعني كلمة دالّة؟
+الدالة في البرمجة عبارة عن كود جاهز يتنفذ فقط عندما تقوم بإستدعائه عندما تكتب إسم الدالة فهذا يعني أتك تطلب من البرنامج تنفيذ هذه الدالة
+<39> العامل Unary plus  (x = +a): تعني أضرب قيمة a بالعامل +
+public class UnaryPlus {
+     public static void main (String[] args) {
+// positive أكبر من صفر, أي قيمة a المثال الأول: إذا كانت قيمة
+int a = 10;
+int b = +a;                     // a لقيمة UnaryPlus تحتوي على الـ b
+System.out.print( b + "\n" );
+// negative أصغر من صفر, أي قيمة a المثال الثاني: إذا كانت قيمة
+a = -10;
+b = +a;                         // a لقيمة UnaryPlus تحتوي على الـ b
+System.out.print( b + "\n" );
+ }
+}
+النتيجة النهائي:
+b = 10
+b = -10
+<40> العامل Unary minus (x = -a): تعني اضرب قيمة a بالعامل -
+public class UnaryMinus {
+    public static void main (String[] args) {
+// positive أكبر من صفر, أي قيمة a المثال الأول: إذا كانت قيمة
+int a = 10;
+int b = -a;                     // a لقيمة UnaryMinus تحتوي على الـ b
+System.out.print( b + "\n" );
+// negative أصغر من صفر, أي قيمة a المثال الثاني: إذا كانت قيمة
+a = -10;
+b = -a;                         // a لقيمة UnaryMinus تحتوي على الـ b
+System.out.print( b + "\n" );
+  }
+}
+النتيجة النهائي:
+b = -10
+b = 10
+<41> تستخدم a == b لمعرفة إذا كانت قيمة a تساوي قيمة b
+تستخدم a != b لمعرفة إذا كانت a لا تساوي قيمة b
+تستخدم a >  b لمعرفة إذا كانت a أكبر من قيمة b
+تستخدم a <  b لمعرفة إذا كانت a أصغر من قيمة b
+تستخدم a >= b لمعرفة إذا كانت a أكبر أو تساوي قيمة b
+تستخدم a <= b لمعرفة إذا كانت a أصغر أو تساوي قيمة b
+<42>الفرق بين الكلمتين Parameter و Argument
+أثناء تعريف الدالة, المتغيرّات التي تقوم بتعريفها بين أقواسها تسمى Parameters تكتب باراميتر باللغة العربية بينما عندما تستدعي الدالة و تعطيها القيم مكان الباراميترات , هذه القيم تسمى Arguments
+هنا المتغيرين int a, int b نسميهم Parameters
+public static void Sum (int a, int b) {
+System.out.print("the sum is: " + (a+b) + "\n");
+}
+هنا القيمتين 3 و 4 نسميهم Arguments
+public static void main (String[] args) {
+Sum(3, 4);
+}
+<43>البيانات في جافا نوعين :
+النوع الاول  Primitive Data Types و تعني أنواع البيانات البدائية
+byte - short - int - long - float - double - boolean - char
+النوع الثاني Reference/Object Data Types و تعني أنواع البيانات المرجعية
+String website   = "www.Google.com";
+String[] names   = new String[10];
+int[] numbers    = new int[100];
+float[] notes    = new float[5];
+char[] alphabets = new char[26];
+Scanner input    = new Scanner(System.in);
+<44>  في حال كنت تريد تعريف عدّة متغيّرات من نفس النّوع بدون قيم
+int a;
+int b;
+int c;
+تستطيع تعريفهم هكذا int a, b, c;
+<45> في حال كنت تريد تعريف عدّة متغيّرات من نفس النّوع و إعطائهم قيم مباشرةً عند إنشائهم
+int a = 10;
+int b = 20;
+int c = 30;
+تستطيع تعريفهم هكذا int a=10, b=20, c=30;
+<46>عمليّة تعريف متغيّر بدون إعطائه قيمة تسمّى Declaration مثال int a;
+عمليّة إعطاء قيمة لمتغيّر تم إنشاءه سابقاً تسمّى Assigning مثال a = 10;
+عمليّة تعريف متغيّر و إعطائه قيمة مباشرةً عند إنشائه تسمّى Initialisation مثال double Sum = 0;
+<47> العامل :? يطلق عليه إسم Ternery Operator لأنّه يأخذ ثلاث عناصر ليعمل يمكن إستعماله بدل جمل الشرط if و else
+variable x = (expression) ? value if true : value if false
+يمثّل(expression) الشرط الذي نضعه
+القيمة التي ستعطى للمتغيّر x إذا تحقّق الشرط نضعها بعد الرمز ?
+القيمة التي ستعطى للمتغيّر x إذا لم يتحقّق الشرط نضعها بعد الرمز :
+مثال :
+int a, b;
+a = 10;
+b = (a == 1) ? 20: 30;
+System.out.print( " b = " +b );
+النتيجة النهائية : b = 30;
+وضع القيمة 30 في b لأن نتيجة الشرط كانت false
+<48>العامل instanceOf يستخدم لمعرفة إذا كان الكائن هو نسخة لكلاس معيّن أم لا إذا كان نسخة منه فإنّه يرجع true إذا لم يكن منه فإنه يرجع false
+( Object reference/variable ) instanceOf ( class/interface )
+String web = "google.com";
+boolean check;
+check = web instanceOf String;
+System.out.print( check );
+النتيجة النهائية : true
+وضع القيمة true في المتغيّر check لأن المتغيّر web هو كائن من الكلاس String
+<49>جملة التحكّم break :
+الجملة break تستخدم مع الـ loops أو الجملة switch او الجملة if او الجملة for او while او do - while
+بمجرّد ان تطبّق الجملة break فإنّها توقف الـ scope بأكمله و تخرج منه و تمسحه من الذاكرة ثمّ تنتقل للكود الّذي يليه في البرنامج
+for( int i=1; i<=10; i++ ){
+if( i == 6 ) {// إذا وجد قيمة العداد تساوي 6 سيوقف الحلقة نهائياً
+break;
+}
+System.out.println( i );
+}
+النتيجة :
+1
+2
+3
+4
+5
+<50>جملة التحكّم continue
+الجملة continue تستخدم مع الـ loops  لتجاوز تنفيذ كود معيّن في الحلقة
+for( int i=1; i<=10; i++ ){
+if( i == 3 ) {// إذا كانت قيمة العداد تساوي 3 إنتقل للفة الثانية
+continue;
+}
+System.out.println( i );
+}
+النتيجة :
+1
+2
+4
+5
+6
+7
+8
+9
+10
+<51>وضع شرط بداخل شرط
+String sex = "female";
+int age = 14;
+if( sex == "male" ){
+System.out.println("Gender: male");
+if( age <= 21 ){
+System.out.println("he is a young boy");
+ }
+}
+else if( sex == "female" ){
+System.out.println("Gender: female");
+if( age <= 21 ){
+System.out.println("she is a young girl");
+ }
+}
+النتيجة :
+Gender: female
+she is a young girl
+<52>ما معنى wrapper classes ؟
+كلّ نوع بيانات بدائي في جافا له كلاس يمثّله, و يكون من نفس إسمه, أمثلة:
+النوع int يمكن تمثيله بالكلاس Integer
+النوع float يمكن تمثيله بالكلاس Float
+النوع byte يمكن تمثيله بالكلاس Byte
+النوع double يمكن تمثيله بالكلاس Double
+النوع short يمكن تمثيله بالكلاس Short
+النوع long يمكن تمثيله بالكلاس Long
+مثال
+Integer a = 10;
+int b = a + 15;
+هنا الـ a سيتم تحويلها إلى int ثم إضافة 15 عليها و تخزين الناتج في b
+<53>دوال الكلاس Math : لكلاس Math هو كلاس جاهز في جافا, يحتوي على دوال تتعلق بالرياضيات
+النوع الاول abs() function : ترجع القيمة المطلقة للعدد الذي نضعه لها كـ argument بنائها int abs(int i)
+int i = -130;
+double b = -0.15;
+Integer I = -5;
+System.out.println( Math.abs(i) );
+System.out.println( Math.abs(b) );
+System.out.println( Math.abs(I) );
+النتيجة :
+130
+0.15
+5
+
+النوع الثاني round() function ترجع أقرب عدد صحيح للعدد الذي نضعه لها كـ argument بنائها int round(float f)
+double d1 = 20.375;
+double d2 = 9.6;
+float f1 = 120.123f;
+float f2 = 99.77f;
+System.out.println( Math.round(d1) );
+System.out.println( Math.round(d2) );
+System.out.println( Math.round(f1) );
+System.out.println( Math.round(f2) );
+النتيجة :
+20
+10
+120
+100
+
+النوع الثالث random() function هذه الدالّة تُستخدم لتوليد عدد عشوائي بين 0.0 و 1.0 بنائها double random()
+System.out.println( Math.random() );
+System.out.println( Math.random() );
+System.out.println( Math.random() );
+النتيجة :
+0.8630498170020632
+0.7316381331323908
+0.9113637080594214
+مثال اخر:
+System.out.println( Math.random()*10 );
+System.out.println( Math.random()*10 );
+System.out.println( Math.random()*10 );
+النتيجة :
+7.086263300934275
+2.0961565338384425
+4.140472473471983
+
+هنالك انواع اخري يمكنك البحث في Google لمعرفة المزيد
+<54>مفهوم الـ Escape Sequences : تعني مجموعة أحرف متتالية, إذا أتت وراء بعضها فإنّها تشكّل شيء معيّن لخلق Escape Sequence نستخدم الرمز (\)
+النوع \t تضيف عدّة مسافات في مكان وضعها
+النوع \b تزيل الحرف الموجود قبلها
+النوع \n تجعل المحتوى الذي يأتي بعدها ينزل على سطر جديد
+النوع \r تجعل الكود يبدأ في التنفيذ من عندها
+النوع \f تضع فاصل بين المحتوى (أي تقسم المحتوى) ملاحظة لن يظهر لك تأثيرها إلا إذا إستخدمتها مع الملفات
+النوع \' لإضافة الرمز ( ' ) في مكان وضعها
+النوع \" لإضافة	 الرمز ( " ) في مكان وضعها
+النوع \u تستخدم لإضافة أي حرف أو رمز من خلال الـ unicode
+<55>الدالة substring() function : ترجع String جديدة عبارة عن substring من الـ String الّذي قام باستدعائها
+String s = "welcome to stackOverFlow.com, best site for programmer";
+System.out.println( s.substring(11) );// رقم 11 index تبدأ من الـ substring هنا سترجع الدالّة
+System.out.println( s.substring(11, 28) );// رقم 28 index رقم 11 و تنتهي قبل الـ index تبدأ من الـ substring هنا سترجع الدالّة
+النتيجة :
+stackOverFlow.com, best site for programmer
+stackOverFlow.com
+<56>الدالة split() function : هذه الدالة تقسّم الـ String إلى مصفوفة نوعها String و ترجعها
+String str = "Gasim-Mohand";
+String[] parts = str.split("-");
+String part1 = parts[0];// Gasim  :الجزء الأول سيحتوي على النص
+String part2 = parts[1];// mohand :الجزء الثاني سيحتوي على النص
+System.out.println( part1 );
+System.out.println( part2 );
+النتيجة :
+Gasim
+mohand
+
+طريقة اخري :
+String str = "Gasim-Mohand";
+String[] parts = str.split("-");
+int i = 0;
+while( i < parts.length ){
+System.out.println( parts[i] );
+i++;
+}
+النتيجة :
+Gasim
+mohand
+
+طريقة اخري :
+String str = "Gasim-Mohand"";
+String[] parts = str.split("-");
+for( String part : parts ){
+System.out.println( part );
+}
+النتيجة :
+Gasim
+mohand
+
+طريقة اخري :
+String str = "Gasim-Mohand-JSCST";
+String[] parts = str.split("-", 2);
+for( String part : parts ){
+System.out.println( part );
+}
+النتيجة :
+Gasim
+mohand
+<57>الدالة subSequence() function : هذه الدالة ترجع charSequence محدّدة من الـ String الّذي قام باستدعائها
+String s = "welcome to StackOverFlow.com, best site for programmers";
+// رقم 28 index رقم 11 و تنتهي قبل الـ index تبدأ من الـ subSequence هنا سترجع الدالّة
+System.out.println( s.subSequence(11, 28) );
+النتيجة :
+StackOverFlow.com
+<58>فوائد الـ Array :
+1.تقليل عدد المتغيّرات المتشابهة, فمثلاً إذا كنّا نريد تعريف 10 متغيّرات نوعهم int, نقوم بتعريف مصفوفة واحدة تتألّف من 10 عناصر
+2.تطوير الكود, إذا قمت بتخزين المعلومات داخل مصفوفة, تستطيع تعديلهم, مقارنتهم أو جلبهم كلّهم دفعة واحدة بكود صغير جداً باستخدام الحلقات
+3.تستطيع الوصول لأي عنصر من خلال الـ index
+
+المشاكل:
+حجمها ثابت, أي عندما تقوم بتعريف مصفوفة و تحدّد عدد عناصرها, لا يمكنك تغيير حجمها لاحقاً, أي لا يمكن حذف عنصر أو زيادة واحد جديد
+<59>الفرق بين Declare Array و Create Array هو:
+Declare Array تعني تعريف نوع في الذاكرة يفهمه المعالج على أنّه مصفوفة
+Create Array تعني تحديد عدد عناصر المصفوفة و إعطاء قيمة أوليّة لكلّ عنصر فيها
+Declare Array:
+datatype[] arrayRefVar;
+
+Create Array:
+datatype[] arrayRefVar = new datatype[size];
+<60> Example3:
+ public static void main (String[] args) {
+int[] a = { 10, 20, 30, 40, 50 }; // هنا قمنا بتعريف مصفوفة تتألف من 5 عناصر
+a[0] = 99;                        // هنا قمنا بتغيير قيمة العنصر الأول
+System.out.println("a[0] = " + a[0]);        // هنا عرضنا قيمة العنصر الأول
+System.out.println("a.length = " + a.length);// هنا عرضنا عدد عناصر المصفوفة
+}
+النتيجة :
+a[0] = 99
+a.length = 5
+<61>الحلقة foreach : هذه الحلقة تسمح لك بالمرور على جميع عناصر المصفوفة دون الحاجة لتعريف عدّاد و تحديد أين يبدأ و أين ينتهي
+ public static void main (String[] args) {
+// هنا قمنا بتعريف المصفوفة
+int[] numbers = { 1000, 2000, 3000, 4000, 5000 };
+// element في المتغير numbers هنا في كل دورة سيتم تخزين قيمة عنصر من عناصر المصفوفة
+for(int element: numbers){
+System.out.println(element);// element هنا سيتمّ عرض القيمة التي تخزّنت في المتغيّر
+ }
+}
+النتيجة :
+1000
+2000
+3000
+4000
+5000
+<62>Example 4:
+public class TestArray {
+ public static void main (String[] args) {
+// 2- هنا قمنا بتعريف مصفوفة
+int[] numbers = { 1000, 2000, 3000, 4000, 5000 };
+// 3- هنا قمنا باستدعاء الدالّة و مرّرنا لها المصفوفة
+printArray(numbers);
+System.out.println();
+// 4- هنا قمنا باستدعاء الدالّة و أنشأنا مصفوفة بداخلها. ستفهم هذا الأسلوب في دروس لاحقة
+printArray(new int[] {11, 12, 13, 14, 15});
+}
+
+// 1- argument هنا قمنا بتعريف دالّة تطبع محتوى أي مصفوفة نمرّرها لها كـ
+public static void printArray(int[] array) {
+for (int i=0; i<array.length; i++) {
+System.out.print(array[i] + " ");
+    }
+  }
+}
+النتيجة :
+1000 2000 3000 4000 5000
+11 12 13 14 15
+<63>Example 5:
+public class TestArray {
+public static void main (String[] args) {
+int[] numbers = { 1000, 2000, 3000, 4000, 5000 }; // 2- هنا قمنا بتعريف مصفوفة
+int[] reversedNumbers;// 3- بالمقلوب numbers هنا قمنا بتعريف مصفوفة فارغة, سنستخدمها لحفظ قيم المصفوفة
+reversedNumbers = reverseArray(numbers);// 4- reversedNumbers هنا قمنا بتخزين المصفوفة المقلوبة التي سترجعها الدالّة في المصفوفة
+for (int i=0; i<reversedNumbers.length; i++) {// 5- للتأكّد فقط reversedNumbers هنا بعرض قيم المصفوفة
+System.out.print(reversedNumbers[i] + " ");
+   }
+}
+
+// 1- بالمقلوب argument هنا قمنا بتعريف دالّة ترجع محتوى المصفوفة نمرّرها لها كـ
+public static int[] reverseArray(int[] array) {
+int[] result = new int[array.length];
+for (int i=0, j=result.length-1; i<array.length; i++, j--) {
+result[j] = array[i];
+}
+return result;
+    }
+}
+ النتيجة  :
+5000 4000 3000 2000 1000
+<64>معرفة التاريخ و الوقت الحالي
+import java.util.Date;
+
+public class DateDemo {
+public static void main (String[] args) {
+// date هنا قمنا بإنشاء تاريخ و خزناه في الكائن
+Date date = new Date();
+// date هنا قمنا بعرض التاريخ الذي تم تخزينه في الكائن
+System.out.println( date );
+ }
+}
+النتيجة :
+Tue Dec 22 11:20:42 EET 2017 هذه النتيجة تتغير حسب الوقت الحالي لجهازك
+<65>الكلاس Date هو كلاس جاهز في جافا يستخدم لمعرفة التاريخ و الوقت. و يحتوي على عدة دوال للتعامل مع الوقت سواء لمقارنة وقت مع وقت أو لمعرفة وقت معين
+<66>Example 7:
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateDemo {
+public static void main (String[] args) {
+// date هنا قمنا بإنشاء تاريخ و خزناه في الكائن
+Date date = new Date();
+// جديدة لإظهار الوقت format هنا قمنا بإنشاء
+SimpleDateFormat sdf = new SimpleDateFormat("'Current Date:' dd/MM/yy     'Current Time:' hh:mm:ss a");
+// ثم قمنا بعرض النتيجة format من خلال الدالة date على الـ format هنا قمنا بتطبيق الـ
+System.out.println( sdf.format(date) );
+  }
+}
+ النتيجة :
+Current Date: 22/12/17    Current Time: 07:46:05 PM
+هذه النتيجة تتغير حسب الوقت الحالي لجهازك
+<67>Example 8:
+import java.util.Date;
+
+public class DateDemo {
+  public static void main (String[] args) {
+// date هنا قمنا بإنشاء تاريخ و خزناه في الكائن
+Date date = new Date();
+// هنا قمنا بعرض التاريخ والوقت
+System.out.printf( "Current Date/time: %tc", date );
+// هنا قمنا بعرض التاريخ فقط
+System.out.printf( "\nCurrent Date: %tF", date );
+// هنا قمنا بعرض الوقت فقط
+System.out.printf( "\nCurrent time: %tr", date )
+  }
+}
+ النتيجة :
+ Current Date/time: Thu Dec 24 19:03:58 EET 2017
+ Current Date: 2017-12-24
+ Current time: 07:03:58 PM
+هذه النتيجة تتغير حسب الوقت الحالي لجهازك
+<68>Example 9:
+import java.util.Date;
+
+public class DateDemo {
+ public static void main (String[] args) {
+// date هنا قمنا بإنشاء تاريخ و خزناه في الكائن
+Date date = new Date();
+// هنا قمنا بعرض الوقت فقط
+System.out.printf( "Current time: %tH:%tM:%tS", date, date, date );
+   }
+}
+النتيجة :
+Current time: 19:03:58
+هذه النتيجة تتغير حسب الوقت الحالي لجهازك
+<69>مفهوم الإستثناءات: تعني Exceptions في البرمجة, و الإستثناء عبارة عن خطأ يحدث أثناء تشغيل البرنامج يؤدي إلى إيقافه بشكل غير طبيعي
+الأسباب التي تسبب حدوث إستثناء:
+1.في حال إدخال قيمة لا تتطابق مع نوع المتغير الذي ستخزن فيه.
+2.في حال إدخال رقم index غير موجود في مصفوفة أو في متغير نوعه String.
+3.في حال كان البرنامج يتصل بالشبكة و فجأةً إنقطع الإتصال.
+4.في حال كان البرنامج يحاول قراءة معلومات من ملف نصي, و كان هذا الملف غير موجود.
+<70>إلتقاط الإستثناء: و هو عبارة عن طريقة تسمح لك بحماية البرنامج من أي كود تشك بأنه قد يسبب أي خطأ باستخدام الجملتين try و catch
+try
+{
+// Protected Code
+// هنا نكتب الأوامر التي قد تولد إستثناء
+}
+catch(ExceptionType e)
+{
+// Error Handling Code
+// برمي إستثناء try هنا نكتب أوامر تحدد للبرنامج ماذا يفعل إذا قامت الـ
+}
+الكود الذي نضعه بداخل الجملة try يسمى Protected Code و هذا يعني أن البرنامج محمي من أي خطأ قد يحدث بسبب هذا الكود و الكود الذي نضعه بداخل الجملة catch يسمى Error Handling Code و يقصد منها الكود الذي سيعالج الإستثناء الذي قد يتم إلتقاطه
+<71>Example 10:
+public class TestExceptions {
+  public static void main (String[] args) {
+try {                      // try هنا قمنا بتجربة الكود الموجود بداخل الجملة
+int a  = 2,b = 0,z;
+z = a / b;
+System.out.println(z);//لايمكن القسمة علي صفر  سيتم رمي الخطا catch
+}
+catch( Exception e ) {  // e هنا سيتم إلتقاط الإستثناء, ثم تخزينه في الكائن
+System.out.println( "Exception thrown: " + e ); // لنعرف طبيعة الخطأ الذي حدث e هنا قمنا بعرض محتوى الكائن
+}
+// بعد الإنتهاء من تجربة الكود سيتم تنفيذ باقي الأوامر الموجودة في البرنامج
+System.out.println( "Can't Divided By Zero" );
+   }
+}
+النتيجة :
+Can't Divided By Zero
+<72>الجملة finally
+الجملة finally تأتي بعد الجملتين try و catch.
+الكود الموضوع في الجملة finally يتنفذ دائماً, أي في حال حدث إستثناء أو لم يحدث فإنه سيتنفذ.
+الجملة finally تستخدم لتنظيف الكود, بمعنى أنها تستخدم للتخلص من أي كود لم يعد البرنامج يحتاج إليه.
+try
+{
+// Protected Code
+}
+catch(ExceptionType1 e1)
+{
+// Error Handling Code For ExceptionType1
+}
+catch(ExceptionType2 e2)
+{
+// Error Handling Code For ExceptionType2
+}
+catch(ExceptionType3 e3)
+{
+// Error Handling Code For ExceptionType3
+}
+finally
+{
+// Optional Cleanup Code
+// هنا نقوم بكتابة أوامر للتخلي عن أي شيء لم يعد البرنامج بحاجة له
+}
+<73> الكلاس(Class) :  عبارة عن وعاء كبير يستطيع أن يحتوي على كل الكود من متغيرات و دوال و كائنات إلخ..
+class Person {
+
+    String name;
+    String sex;
+    String job;
+    int age;
+
+    void printInfo() {
+        System.out.println("Name: " +name);
+        System.out.println("Sex: " +sex);
+        System.out.println("Job: " +job);
+        System.out.println("Age: " +age);
+    }
+}
+أي متغيرات يتم تعريفها بداخل كلاس و خارج أي دالة تسمى خصائص (attributes), و هذا يعني أن أي كائن من هذا الكلاس سيكون عنده هذه الخصائص
+<74>كائن (Object): و الكائن عبارة عن نسخة مطابقة لكلاس معين
+بما أن الكائن عبارة عن نسخة من الكلاس, يمكننا القول أنه لا يمكن إنشاء كائن إذا لم يكن هناك كلاس
+Person Mohand = new Person();
+<75>علاقة الـ Object بالـ Class :
+الكائنات تساعد المبرمج كثيراً, فمثلاً إذا كنت تنوي إنشاء برنامج بسيط لحفظ معلومات أشخاص, هل ستنشئ كلاس لكل شخص ؟! طبعاً لا, بل تنشئ كلاس واحد فقط يمثل شخص, و تضع فيه الأشياء الأساسية التي تريدها أن تكون موجودة عند كل شخص. ثم تنشئ منه كائنات قدر ما شئت, و عندها يصبح كل كائن من هذا الكلاس عبارة عن شخص له معلوماته الخاصة
+<76> Example 11:
+public class Person {
+
+    // هنا قمنا بتعريف 4 خصائص
+    String name;
+    String sex;
+    String job;
+    int age;
+
+    // هنا قمنا بتعريف دالة تطبع محتوى كل خاصية عندما يتم استدعاءها
+    void printInfo() {
+        System.out.println("Name: " +name);
+        System.out.println("Sex: " +sex);
+        System.out.println("Job: " +job);
+        System.out.println("Age: " +age);
+        System.out.println();
+    }
+
+}
+
+public class Main {
+
+    public static void main (String[] args) {
+
+        // Person هنا قمنا بإنشاء كائنات من الكلاس
+        Person p1 = new Person();     // سيمثل محمد p1 الكائن
+        Person p2 = new Person();     //  سيمثل روز p2 الكائن
+        Person p3 = new Person();     // سيمثل أحمد p3 الكائن
+        Person p4 = new Person();     // سيمثل ربيع p4 الكائن
+
+        // p1 هنا قمنا بتحديد خصائص الكائن
+        p1.name = "Mohand";
+        p1.sex  = "Male";
+        p1.job  = "Programmer";
+        p1.age  = 21;
+
+        // p2 هنا قمنا بتحديد خصائص الكائن
+        p2.name = "Rose";
+        p2.sex  = "Female";
+        p2.job  = "Secretary";
+        p2.age  = 22;
+
+        // p3 هنا قمنا بتحديد خصائص الكائن
+        p3.name = "Gasim";
+        p3.sex  = "Male";
+        p3.job  = "Programmer";
+        p3.age  = 34;
+
+        // p4 هنا قمنا بتحديد خصائص الكائن
+        p4.name = "Rabih";
+        p4.sex  = "Male";
+        p4.job  = "Engineer";
+        p4.age  = 27;
+
+        // هنا قمنا بعرض خصائص كل كائن
+        p1.printInfo();
+        p2.printInfo();
+        p3.printInfo();
+        p4.printInfo();
+    }
+}
+ النتيجة :
+ Name: Mohand
+ Sex: Male
+ Job: Programmer
+ Age: 21
+
+ Name: Rose
+ Sex: Female
+ Job: Secretary
+ Age: 22
+
+ Name: Gasim
+ Sex: Male
+ Job: Programmer
+ Age: 34
+
+ Name: Rabih
+ Sex: Male
+ Job: Engineer
+ Age: 27
+<77> كونستركتور Constructor :
+من أهم الأشياء التي عليك التفكير بها بعد إنشاء كلاس جديد, هي تسهيل طريقة خلق كائنات من هذا الكلاس من هنا جائت فكرة الكونستركتور و الذي هو عبارة عن دالة لها نوع خاص, يتم إستدعائها أثناء إنشاء كائن لتوليد قيم أولية للخصائص الموجودة فيه
+class Person {
+    public Person() {
+    }
+}
+<78> نقاط مهمة حول الكونستركتور (Constructor):
+1.كل كلاس يتم إنشاءه, يحتوي على كونستركتور واحد على الأقل. و حتى إن لم تقم بتعريف أي كونستركتور, سيقوم المترجم بإنشاء واحد إفتراضي عنك.
+2.في كل مرة يتم إنشاء كائن جديد, يجب استدعاء كونستركتور حتى يتم إنشاء هذا الكائن.
+3.القاعدة الأساسية عند تعريف كونستركتور هي أنه يجب أن يحمل نفس إسم الكلاس و يكون نوعه public.
+4.في حال قمت بتعريف كونستركتور, لن يقوم المترجم بإنشاء واحد إفتراضي, أي لن يعود هناك كونستركتور إفتراضي.
+5.يمكنك تعريف أكثر من كونستركتور. و يمكنك دائماً إنشاء كونستركتور فارغ, حتى تستخدمه إن كنت لا تريد إعطاء قيم أولية محددة للخصائص عند إنشاء كائن.
+<79>Example 12:
+public class Person {
+
+    // هنا قمنا بتعريف 4 خصائص
+    String name;
+    String sex;
+    String job;
+    int age;
+
+    // إفتراضي constructor فارغ, أي كأننا قمنا بتعريف constructor هنا قمنا بتعريف
+    public Person() {
+
+    }
+
+    // ثاني, الهدف منه إعطاء قيم لجميع الخصائص الموجودة في الكائن عند إنشاءه مباشرةً constructor هنا قمنا بتعريف
+    // عليك إدخال 4 قيم من نفس النوع و بالترتيب الموضوع constructor عند استدعاء هذا الـ
+    public Person(String n, String s, String j, int a) {
+        name = n;    // name سيتم وضعه كقيمة للخاصية n الذي سيتم تخزينه في String الـ
+        sex = s;     // sex سيتم وضعه كقيمة للخاصية s الذي سيتم تخزينه في String الـ
+        job = j;     // job سيتم وضعه كقيمة للخاصية j الذي سيتم تخزينه في String الـ
+        age = a;     // age سيتم وضعه كقيمة للخاصية a الذي سيتم تخزينه في int الـ
+    }
+
+    // هنا قمنا بتعريف دالة تطبع محتوى كل خاصية عندما يتم استدعاءها
+    void printInfo() {
+        System.out.println("Name: " +name);
+        System.out.println("Sex: " +sex);
+        System.out.println("Job: " +job);
+        System.out.println("Age: " +age);
+        System.out.println();
+    }
+
+}
+
+public class Main {
+
+    public static void main (String[] args) {
+
+        // Person هنا قمنا بإنشاء كائنات من الكلاس
+        Person p1 = new Person("Mohand", "Male", "Programmer", 21);  // يمثل الشخص محمد مع تحديد كامل خصائصه p1 الكائن
+        Person p2 = new Person("Rose", "Female", "Secretary", 22);   // يمثل الشخص روز  مع تحديد كامل خصائصه p2 الكائن
+        Person p3 = new Person("Ahmad", "Male", "Doctor", 34);       // يمثل الشخص أحمد مع تحديد كامل خصائصه p3 الكائن
+        Person p4 = new Person("Gasim", "Male", "Engineer", 27);     // يمثل الشخص ربيع مع تحديد كامل خصائصه p4 الكائن
+
+        // الفارغ, فإضطررنا إلى إدخال قيمة لكل خاصية موجودة فيه constructor هنا قمنا بإنشاء كائن جديد باستخدام الـ
+        Person p5 = new Person();
+
+        // p5 هنا قمنا بتحديد خصائص الكائن
+        p5.name = "Lina";
+        p5.sex  = "Female";
+        p5.job  = "Graphic Designer";
+        p5.age  = 24;
+
+        // هنا قمنا بعرض خصائص كل كائن
+        p1.printInfo();
+        p2.printInfo();
+        p3.printInfo();
+        p4.printInfo();
+        p5.printInfo();
+    }
+}
+
+النتيجة :
+Name: Mohand
+Sex: Male
+Job: Programmer
+Age: 21
+
+Name: Rose
+Sex: Female
+Job: Secretary
+Age: 22
+
+Name: Ahmad
+Sex: Male
+Job: Doctor
+Age: 34
+
+Name: Gasim
+Sex: Male
+Job: Engineer
+Age: 27
+
+Name: Lina
+Sex: Female
+Job: Graphic Designer
+Age: 24
+<80>Example 13:
+class VariablesNames {
+
+    // block لأنه تم تعريفهم بداخل الكلاس و خارج أي دالة أو Instance Variables تعتبر ( a, b, c, d ) المتغيرات
+    // ستفهم معناها في الدرس التالي, لكننا وضعناها فقط لتفهم الأسماء المستخدمة ( public, protected, private ) الكلمات
+    int a;
+    public int b;
+    protected int c;
+    private int d;
+
+    // static لأن نوعه Class Variable يعتبر e المتغير
+    static int e;
+
+    // لأنه تم تعريفها بداخل الدالة Local Variables تعتبر ( x, y, z ) المتغيرات
+    public int sum(int x, int y) {
+        int z = x + y;
+        return z;
+    }
+
+}
+<81>الكلمة this :  هي كلمة محجوزة في لغة جافا, و هي تستخدم للإشارة إلى الـ Global Variables, و تستخدم أيضاً للإشارة إلى الكائن الحالي
+public class Person {
+
+    String name;
+    String sex;
+    String job;
+    int age;
+
+    public Person() {
+
+    }
+
+    // لأن أسماء الباراميترات الموضوعة ليست نفسها أسماء الخصائص this هنا لا يوجد داعي لاستخدام الكلمة
+    public Person(String n, String s, String j, int a) {
+        this.name = n;     // الموجودة في الكلاس name الموجود في الدالة, سيتم وضعها في الخاصية n القيمة التي سيتم إدخالها في المتغير
+        this.sex  = s;     // الموجودة في الكلاس sex الموجود في الدالة,  سيتم وضعها في الخاصية s القيمة التي سيتم إدخالها في المتغير
+        this.job  = j;     // الموجودة في الكلاس job الموجود في الدالة,  سيتم وضعها في الخاصية j القيمة التي سيتم إدخالها في المتغير
+        this.age  = a;     // الموجودة في الكلاس age الموجود في الدالة,  سيتم وضعها في الخاصية a القيمة التي سيتم إدخالها في المتغير
+    }
+
+    // لأن الدالة لا تحتوي على باراميترات و بالتالي سيفهم المترجم أنك تقصد عرض قيم الخصائص الموجودة في الكائن حتى لو لم تستخدمها this هنا لا يوجد داعي لاستخدام الكلمة
+    void printInfo() {
+        System.out.println("Name: " +this.name);
+        System.out.println("Sex: "  +this.sex);
+        System.out.println("Job: "  +this.job);
+        System.out.println("Age: "  +this.age);
+        System.out.println();
+    }
+
+}
+النتيجة :
+Name: Mhamad
+Sex: Male
+Job: Programmer
+Age: 21
+
+Name: Rose
+Sex: Female
+Job: Secretary
+Age: 22
+
+Name: Ahmad
+Sex: Male
+Job: Doctor
+Age: 34
+
+Name: Rabih
+Sex: Male
+Job: Engineer
+Age: 27
+
+Name: Lina
+Sex: Female
+Job: Graphic Designer
+Age: 24
+<82>مفهوم الـ Modifiers :الـ Modifiers هم كلمات يمكنك إضافتهم عند تعريف أشياء جديدة ( سواء كلاس, متغير, دالة إلخ.. ) لتحديد طريقة الوصول إليها
+فإذا كنت تعمل على إنشاء برنامج معين ضمن فريق من المبرمجين, و تريد ضمان عدم إساءة إستخدام الأشياء التي قمت بتعريفها من قبل مبرمج آخر.
+
+الـ Modifiers ينقسمون إلى قسمين أساسيين
+1.ألـ Access Modifiers
+2.ألـ Non Access Modifiers
+
+public class Student {
+
+    private String  firstName;
+    private String  lastName;
+    private String  specialization;
+    private int     id;
+    private boolean isWork;
+    final   String  theAvgerageForSuccess = "50%";
+    static  String  CollegeName = "MIT";
+
+    public static void printFullName() {
+        System.out.println("Name: " +firstName+ " " +lastName);
+    }
+}
+<83> الـ public  الكلاس أو الدالة أو المتغير الذي يتم تعريفه كـ public يمكن الوصول إليه مباشرةً
+<84> الـ protected الدالة أو المتغير الذي يتم تعريفه كـ protected يمكن الوصول إليه فقط من الكلاسات الموجودة في نفس الـ package أو من الكلاسات التي ترث منه.
+ملاحظة:
+لا يمكنك تعريف كلاس كـ protected.
+<85>إذا لم تضع أي كلمة من الـ Access Modifiers(public - protected - private) عند تعريف كلاس أو دالة أو متغير سيتم وضع Modifier إفتراضي عنك يسمى package private.	و هذا يعني أنه يمكن الوصول إليه فقط من الكلاسات الموجودة في نفس الـ package.
+<86>الـ private هو أعلا مستوى من حيث الحماية. المتغيرات و الدوال التي يتم تعريفها كـ private يمكن الوصول لها فقط من داخل الكلاس الذي تم تعريفها فيه
+ملاحظات :
+لا يمكنك تعريف كلاس كـ private.
+لا تقم بتعريف دالة كـ private إذا كان نوعها أيضاً abstract لأنك لن تستطيع أن تفعل لها override.
+<87>الـ Access Modifiers (public - protected - private) هم الأشياء الأساسية التي تسمح لك بتطبيق مبدأ الـ Encapsulation الذي يمكنك من إخفاء البيانات الأساسية في الكود التي لا تريد لأحد من المبرمجين الآخرين أن يعرف بتفاصيلهم. ستتعلم مبدأ الـ Encapsulation في الدرس التالي
+<88>جميع الكلمات التي تنتمي إلى الـ Non Access Modifiers هي التالية:
+1.static
+2.final
+3.abstract
+4.synchronized
+5.native
+6.transient
+7.volatile
+8.strictfp
+<89> الـ static : يستخدم لتعريف كلاس أو متغير أو دالة مشتركة بين جميع الكائنات من كلاس معين
+<90> الـ final  :يستخدم لمنع الوراثة من الكلاس, أو لمنع كتابة محتوى الدالة ( أو تعديلها ) في الكلاس الذي يرثها, أو لجعل قيمة المتغير غير قابلة للتغير بعد تحديدها
+<91> الـ abstract : يستخدم لإنشاء كلاس أو دالة مجردة ( أي دالة لا تحتوي على كود ), الهدف من هذا الـ Modifier تجهيز كلاس معين و جعل الكلاسات التي ترث من هذا الكلاس هي من تقوم بتعريف الأشياء الموجودة بداخله
+<92>
+كل منا يحتاج إلي مدرب , مهما كانت اللعبة التي تمارسها.
+~بيل غيتس
+<93>
+قبل إنقاذ الغابات الإستوائية ,ابدا بترتيب غرفتك وكل ما بحولك .
+~بيل غيتس
+<94>
+لن تحصل علي 60.000 دولار سنويا فقط بمجرد أنك تخرجت من الجامعه .
+~بيل غيتس
+<95>
+اقضي الكثير من الوقت  القراءة .
+<96>
+الكتب التي تقرأها بإراتك هي التي تحدد مصيرك عندما لايكون بيدك الخيار .
+<97>
+اجمل إحساس هو الغموض ,إنه مصدر الفن والعلوم .
+ألبرت أينشتاين ~
+<98>
+اسلم طريقة للبداء هي التوقف عن الحديث والبدء بالعمل
+والت ديزني
+<99>
+فعل المستحيل احد دروب المرح .
+والت ديزني ~
+<100>
+الإبداع هو النظر في المألوف بطريقه غير مألوفة .
+أحمد الشقيري~
+<101>

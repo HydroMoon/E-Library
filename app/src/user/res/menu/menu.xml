@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.hydro.library.MainActivity" >
+
+    <item
+        android:title="@string/setting"
+        android:id="@+id/about"
+        android:orderInCategory="2"
+        app:showAsAction="never" />
+
+
+    <item
+        android:title="@string/exit"
+        android:id="@+id/exit"
+        android:orderInCategory="4"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/update"
+        android:id="@+id/update"
+        android:orderInCategory="3"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/notification_setting"
+        android:id="@+id/notification"
+        android:orderInCategory="1"
+        app:showAsAction="never" />
+
+</menu>

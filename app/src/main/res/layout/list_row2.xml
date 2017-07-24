@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/listfiles"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/filename"
+        android:text="cfgfdhdh"
+        android:layout_toRightOf="@+id/listfiles"
+        android:layout_toEndOf="@+id/listfiles"
+        android:paddingTop="5dp"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        android:paddingStart="9dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/filesize"
+        android:text="dfdf"
+        android:layout_below="@+id/filename"
+        android:layout_toRightOf="@+id/listfiles"
+        android:layout_toEndOf="@+id/listfiles"
+        android:paddingTop="2dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingStart="12dp"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/shareBtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/share" />
+
+</RelativeLayout>
