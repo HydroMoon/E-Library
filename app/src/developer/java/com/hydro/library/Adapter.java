@@ -8,10 +8,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +40,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     private ArrayList<listItem> items;
     private String fName;
-    private String path = "http://inscrutable-sixes.000webhostapp.com";
+    private String path_url = "http://inscrutable-sixes.000webhostapp.com";
     private ArrayList<Integer> posimg = new ArrayList<>();
     private static FTPClient ftpCl;
     private static String DPath, sPath;
@@ -57,7 +59,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     void download(String Dpath, String savePath) {
         DPath = Dpath;
         sPath = savePath;
-        //Toast.makeText(context, DPath + " Got 'em: " + path, Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, DPath + " Got 'em: " + path_url, Toast.LENGTH_LONG).show();
 
     }
 
@@ -155,10 +157,10 @@ class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         public void onClick(View v) {
 
             fName = items.get(getAdapterPosition()).getNameF();
-            path += DPath + fName;
+            path_url += DPath + fName;
 
             if (finished) {
-                new DownloadTask(v.getContext(), progressBar, btn).execute(path);
+                new DownloadTask(v.getContext(), progressBar, btn).execute(path_url);
             } else {
                 Snackbar.make(v, "Task not finished", Snackbar.LENGTH_SHORT).show();
             }
@@ -333,7 +335,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
             Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
 
-            path = "http://inscrutable-sixes.000webhostapp.com";
+            path_url = "http://inscrutable-sixes.000webhostapp.com";
 
             if (s.equals(context.getString(R.string.dwncmp))) {
                 new AlertDialog.Builder(context)
@@ -342,12 +344,19 @@ class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                         .setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Uri path = Uri.fromFile(file);
+                                Uri path;
+
+                                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                                    path = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file);
+                                } else {
+                                    path = Uri.fromFile(file);
+                                }
                                 Intent intent = new Intent(Intent.ACTION_VIEW);
                                 MimeTypeMap typeMap = MimeTypeMap.getSingleton();
                                 String mime_type = typeMap.getMimeTypeFromExtension(fileEx(fName));
                                 intent.setDataAndType(path, mime_type);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                 try {
 
                                     context.startActivity(intent);
@@ -392,7 +401,7 @@ class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                 }
             }
             mWL.release();
-            path = "http://inscrutable-sixes.000webhostapp.com";
+            path_url = "http://inscrutable-sixes.000webhostapp.com";
             progressBar.setVisibility(View.GONE);
             btn[1].setVisibility(View.GONE);
             btn[0].setVisibility(View.VISIBLE);

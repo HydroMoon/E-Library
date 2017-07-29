@@ -83,9 +83,9 @@
     <string name="welcometoast">تم استخدام اسم المستخدم الأفتراضي للتغير اذهب (لتغير اسم المستخدم)</string>
     <string name="welcom">مرحبا</string>
     <string name="created">تم التطوير من قبل\nقاسم  -  مهند</string>
-    <string name="version">النسخة 1.1.0 (21/7/2017)</string>
+    <string name="version">النسخة 1.1.2 (28/7/2017)</string>
     <string name="search_first">ابحث اولا</string>
-    <string name="fixes">- تم اصلاح اللغة العربية\n- تم اصلاح الاشعارات</string>
+    <string name="fixes">- اصلاح الاشعارات\n- اضافة اشعارات للدفعة</string>
     <string name="snd">ارسال</string>
     <string name="dofanoti">اشعارات الدفعة</string>
     <string name="addnoti">الرجاء اضافة اشعار</string>
@@ -97,4 +97,9 @@
     <string name="notisndcmp">تم ارسال الإشعار</string>
     <string name="sndfld">فشل الارسال</string>
     <string name="fldtochcknoti">حدث خطاء في التأكد من الإشعارات</string>
+    <string name="save">تم الحفظ</string>
+    <string name="notsave">لم يتم الحفظ</string>
+    <string name="newuninoti">تم رفع اشعار جديد</string>
+    <string name="devby">تم التطوير من قبل مهند وقاسم</string>
+    <string name="choose_subject">اختار المادة</string>
 </resources>

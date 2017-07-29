@@ -24,6 +24,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements inter {
                 adb.setView(view);
                 adb.setIcon(R.drawable.ic_action_emo_cool);
                 adb.setPositiveButton(getString(R.string.ok), null);
-                adb.setNeutralButton(R.string.shareit, new DialogInterface.OnClickListener() {
+                adb.setNeutralButton(getString(R.string.shareit), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         shareApp();
@@ -116,7 +117,8 @@ public class MainActivity extends AppCompatActivity implements inter {
                 break;
             case R.id.exit:
                 new AlertDialog.Builder(MainActivity.this)
-                .setTitle(getString(R.string.exit))
+                        .setTitle(getString(R.string.exit))
+                        .setIcon(R.drawable.ic_action_emo_cry)
                         .setMessage(getString(R.string.exitmsg))
                         .setNegativeButton(getString(R.string.no),null)
                         .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -126,12 +128,12 @@ public class MainActivity extends AppCompatActivity implements inter {
                                 finish();
                             }
                         })
-                .create()
-                .show();
+                        .create()
+                        .show();
                 break;
             case R.id.notification:
                 new AlertDialog.Builder(MainActivity.this)
-                .setTitle(R.string.noti)
+                        .setTitle(R.string.noti)
                         .setSingleChoiceItems(ListItem, NotificationNumber, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -152,9 +154,9 @@ public class MainActivity extends AppCompatActivity implements inter {
                                         break;
                                 }
                                 if (Sucess) {
-                                    Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), getString(R.string.save), Toast.LENGTH_LONG).show();
                                 } else {
-                                    Toast.makeText(getBaseContext(), "Not Saved Please Ask Mohand Or Gasim For This Problem", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), getString(R.string.notsave), Toast.LENGTH_LONG).show();
                                 }
                             }
                         })
@@ -306,15 +308,15 @@ public class MainActivity extends AppCompatActivity implements inter {
                 ret = stringBuilder.toString();
                 new AlertDialog.Builder(c)
                         .setMessage(ret)
-                        .setPositiveButton("OK", null)
+                        .setPositiveButton(getString(R.string.ok), null)
                         .create()
                         .show();
                 if (!del) {
-                    Toast.makeText(c, "File Not Delete Please It Manual", Toast.LENGTH_LONG).show();
+                    Toast.makeText(c, getString(R.string.delflddelmunal), Toast.LENGTH_LONG).show();
                 }
             }
         } catch (IOException e) {
-            Toast.makeText(c,"Flied To Read The File",Toast.LENGTH_LONG).show();
+            Toast.makeText(c, getString(R.string.fldtordfile), Toast.LENGTH_LONG).show();
         }
         //نهاية اشعارات الدفعة
     }
@@ -407,7 +409,13 @@ public class MainActivity extends AppCompatActivity implements inter {
                             String filePath = Environment.getExternalStorageDirectory() + File.separator + "SEL" + openPath;
                             File file = new File(filePath);
 
-                            Uri path = Uri.fromFile(file);
+                            Uri path;
+
+                            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                                path = FileProvider.getUriForFile(getApplicationContext(), BuildConfig.APPLICATION_ID + ".provider", file);
+                            } else {
+                                path = Uri.fromFile(file);
+                            }
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             MimeTypeMap typeMap = MimeTypeMap.getSingleton();
 
@@ -415,7 +423,7 @@ public class MainActivity extends AppCompatActivity implements inter {
                                 String mime_type = typeMap.getMimeTypeFromExtension(fileEx(NameOfUploadedFile));
                                 intent.setDataAndType(path, mime_type);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                 try {
                                     startActivity(intent);
                                 } catch (ActivityNotFoundException e) {

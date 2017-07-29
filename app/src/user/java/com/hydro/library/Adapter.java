@@ -8,10 +8,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -266,12 +268,18 @@ class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                         .setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Uri path = Uri.fromFile(file);
+                                Uri path;
+                                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                                    path = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file);
+                                } else {
+                                    path = Uri.fromFile(file);
+                                }
                                 Intent intent = new Intent(Intent.ACTION_VIEW);
                                 MimeTypeMap typeMap = MimeTypeMap.getSingleton();
                                 String mime_type = typeMap.getMimeTypeFromExtension(fileEx(fName));
                                 intent.setDataAndType(path, mime_type);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                 try {
 
                                     context.startActivity(intent);

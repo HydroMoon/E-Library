@@ -7,8 +7,8 @@ android {
         applicationId "com.hydro.library"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.0.9"
+        versionCode 5
+        versionName "1.1.2"
     }
     buildTypes {
         release {
@@ -21,15 +21,15 @@ android {
             minSdkVersion 15
             applicationId 'com.hydro.library.dev'
             targetSdkVersion 26
-            versionCode 3
-            versionName '1.0.9_dev'
+            versionCode 5
+            versionName '1.1.2_dev'
         }
         user {
             minSdkVersion 15
             applicationId 'com.hydro.library.user'
             targetSdkVersion 26
-            versionCode 3
-            versionName '1.0.9_user'
+            versionCode 5
+            versionName '1.1.2_user'
         }
     }
 }

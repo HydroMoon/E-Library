@@ -19,12 +19,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -37,7 +37,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.apache.commons.net.ftp.FTP;
@@ -61,6 +60,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements inter {
     public String path20, path, uploadPath, dateName;
@@ -121,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements inter {
                 adb.setView(view);
                 adb.setIcon(R.drawable.ic_action_emo_cool);
                 adb.setPositiveButton(getString(R.string.ok), null);
-                adb.setNeutralButton(R.string.shareit, new DialogInterface.OnClickListener() {
+                adb.setNeutralButton(getString(R.string.shareit), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         shareApp();
@@ -138,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements inter {
             case R.id.exit:
                 new AlertDialog.Builder(MainActivity.this)
                 .setTitle(getString(R.string.exit))
+                        .setIcon(R.drawable.ic_action_emo_cry)
                         .setMessage(getString(R.string.exitmsg))
                         .setNegativeButton(getString(R.string.no),null)
                         .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -173,9 +179,9 @@ public class MainActivity extends AppCompatActivity implements inter {
                                         break;
                                 }
                                 if (Sucess) {
-                                    Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), getString(R.string.save), Toast.LENGTH_LONG).show();
                                 } else {
-                                    Toast.makeText(getBaseContext(), "Not Saved Please Ask Mohand Or Gasim For This Problem", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getBaseContext(), getString(R.string.notsave), Toast.LENGTH_LONG).show();
                                 }
                             }
                         })
@@ -192,10 +198,13 @@ public class MainActivity extends AppCompatActivity implements inter {
                 adb1.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        editor.putString("UserName", editText.getText().toString());
-                        editor.apply();
-                        String test = sharedPreferences.getString("UserName", "MG");
-                        Toast.makeText(MainActivity.this, test, Toast.LENGTH_SHORT).show();
+                        if (editText.length() == 0) {
+                            Toast.makeText(MainActivity.this, getString(R.string.notsave), Toast.LENGTH_SHORT).show();
+                        } else {
+                            editor.putString("UserName", editText.getText().toString());
+                            editor.apply();
+                            Toast.makeText(MainActivity.this, getString(R.string.save), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 adb1.show();
@@ -244,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements inter {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setNegativeButton(getString(R.string.dwncncl), null);
+                .setNegativeButton(getString(R.string.cancBtn), null);
         final AlertDialog dialog = builder.create();
         dialog.show();
 
@@ -257,10 +266,43 @@ public class MainActivity extends AppCompatActivity implements inter {
                 } else {
                     dialog.dismiss();
                     PrepareToSendCollageNotification(jscstText, MainActivity.this);
+                    //new SendNotiByPOST().execute(jscstText);
                 }
             }
         });
     }
+
+    private class SendNotiByPOST extends AsyncTask<String, Void, String> {
+
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = new FormBody.Builder()
+                    .add("notiText", strings[0])
+                    .build();
+            Request request = new Request.Builder()
+                    .url("http://192.168.43.238:8080/test.php")
+                    .post(body)
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+
+                return response.toString();
+            } catch (IOException e) {
+                return "Error: " + e.toString();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
+            Log.i("lol", s);
+        }
+    }
+
 
 
     private void PrepareToSendCollageNotification(String jscstText, Context c) {
@@ -269,6 +311,9 @@ public class MainActivity extends AppCompatActivity implements inter {
         try {
             String PathOfFile =Environment.getExternalStorageDirectory() + File.separator +  "jscst.txt";
             File CreatePathFile = new File(PathOfFile);
+            if (CreatePathFile.exists()) {
+                CreatePathFile.delete();
+            }
             boolean SuccessToCreateFile = CreatePathFile.createNewFile();
             if (SuccessToCreateFile) {
                 OutputStream outputStream = new FileOutputStream(CreatePathFile);
@@ -292,6 +337,7 @@ public class MainActivity extends AppCompatActivity implements inter {
 
     private class CheckForTheLastCollageNotification extends AsyncTask <String,Void,String> {
         String LastFile, pathOfNotification  = "/public_html/CollageNotification";
+        String username = sharedPreferences.getString("UserName","MG");
         @Override
         protected String doInBackground(String... params) {
             ftpC.enterLocalPassiveMode();
@@ -300,9 +346,9 @@ public class MainActivity extends AppCompatActivity implements inter {
                 FTPFile[] ftpFiles = ftpC.listFiles(pathOfNotification);
 
                 LastFile = ftpFiles[ftpFiles.length - 1].getName();
-                LastFile = LastFile.substring(0,LastFile.lastIndexOf("-"));
+                LastFile = LastFile.substring(0,LastFile.indexOf("-"));
                 int NumberOfLastFile = Integer.parseInt(LastFile) + 1;
-                String NameOfNotificationFile = NumberOfLastFile + "-" + params[0];
+                String NameOfNotificationFile = NumberOfLastFile + "-" + username+ "-" + params[0];
 
                 File from = new File(params[1], params[0]);
                 File to = new File(params[1], NameOfNotificationFile);
@@ -337,9 +383,20 @@ public class MainActivity extends AppCompatActivity implements inter {
         protected void onPostExecute(String s) {
             progressDialog2.dismiss();
             if (s == null) {
-                Toast.makeText(getApplicationContext(), R.string.fldtochcknoti, Toast.LENGTH_LONG).show();
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Reconnect...")
+                        .setMessage("It seem that you not have internet connection do you want to reconnect?")
+                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                new ftpConnect().execute();
+                            }
+                        })
+                        .setNegativeButton(getString(R.string.no), null)
+                        .create()
+                        .show();
             } else {
-                Toast.makeText(getApplicationContext(),s, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -394,7 +451,7 @@ public class MainActivity extends AppCompatActivity implements inter {
 
                     if (editText.length() == 0) {
                         Toast.makeText(getBaseContext(), R.string.welcometoast, Toast.LENGTH_LONG).show();
-                        editor.putString("UserName", "UserName");
+                        editor.putString("UserName", "MG");
                         editor.putBoolean("FirstRun", false);
                         editor.apply();
                     } else {
@@ -495,15 +552,15 @@ public class MainActivity extends AppCompatActivity implements inter {
                 ret = stringBuilder.toString();
                 new AlertDialog.Builder(c)
                         .setMessage(ret)
-                        .setPositiveButton("OK", null)
+                        .setPositiveButton(getString(R.string.ok), null)
                         .create()
                         .show();
                 if (!del) {
-                    Toast.makeText(c, "File Not Delete Please It Manual", Toast.LENGTH_LONG).show();
+                    Toast.makeText(c, getString(R.string.delflddelmunal), Toast.LENGTH_LONG).show();
                 }
             }
         } catch (IOException e) {
-            Toast.makeText(c,"Flied To Read The File",Toast.LENGTH_LONG).show();
+            Toast.makeText(c, getString(R.string.fldtordfile), Toast.LENGTH_LONG).show();
         }
         //نهاية اشعارات الدفعة
     }
@@ -596,8 +653,12 @@ public class MainActivity extends AppCompatActivity implements inter {
                             //Toast.makeText(getBaseContext(), "Just Give It Path", Toast.LENGTH_LONG).show();
                             String filePath = Environment.getExternalStorageDirectory() + File.separator + "SEL" + openPath;
                             File file = new File(filePath);
-
-                            Uri path = Uri.fromFile(file);
+                            Uri path;
+                            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                                path = FileProvider.getUriForFile(getApplicationContext(), BuildConfig.APPLICATION_ID + ".provider", file);
+                            } else {
+                                path = Uri.fromFile(file);
+                            }
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             MimeTypeMap typeMap = MimeTypeMap.getSingleton();
 
@@ -605,7 +666,7 @@ public class MainActivity extends AppCompatActivity implements inter {
                                 String mime_type = typeMap.getMimeTypeFromExtension(fileEx(NameOfUploadedFile));
                                 intent.setDataAndType(path, mime_type);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                 try {
                                     startActivity(intent);
                                 } catch (ActivityNotFoundException e) {
@@ -1325,7 +1386,7 @@ public class MainActivity extends AppCompatActivity implements inter {
             try {
                 int curVersion = packageInfo.versionCode;
 
-                url = new URL("http://gasim.000webhostapp.com/UPDATE/c.txt");
+                url = new URL("http://gasim.000webhostapp.com/UPDATE/update_dev.txt");
                 conn = (HttpURLConnection) url.openConnection();
                 conn.connect();
 

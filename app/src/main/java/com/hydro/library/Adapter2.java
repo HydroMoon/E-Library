@@ -91,7 +91,7 @@ class Adapter2 extends RecyclerView.Adapter<Adapter2.MyViewHolder> {
             String File_name  = items.get(getAdapterPosition()).getNameF();
             File ex_Store = new File(Environment.getExternalStorageDirectory() + File.separator + "SEL" + File.separator + Path + File.separator + File_name);
             Uri path;
-            String test = BuildConfig.APPLICATION_ID;
+
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
                 path = FileProvider.getUriForFile(v.getContext(), BuildConfig.APPLICATION_ID + ".provider", ex_Store);
             } else {

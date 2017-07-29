@@ -18,6 +18,8 @@ import org.json.JSONObject;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,6 +41,7 @@ public class notificationservice extends Service {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     int notificationNumberOfCollage;
+    String username;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -123,12 +126,10 @@ public class notificationservice extends Service {
 
                         case 0:
                             editor.putInt("notificationNumber", notificationNumber += 1);
-                            editor.apply();
                             break;
 
                         case 1:
                             editor.putInt("notificationNumber", jarr.length());
-                            editor.apply();
                             break;
                     }
                 }
@@ -139,9 +140,11 @@ public class notificationservice extends Service {
 
                     String LastFile = json1.getString("name");
 
+                    username = LastFile.substring(LastFile.indexOf("-") + 1,LastFile.lastIndexOf("-"));
+
+
                     if (notificationNumberOfCollage == -1) {
                         editor.putInt("CollageNotification", jarr1.length());
-                        editor.apply();
                         return null;
                     } else {
 //                        String notificationPlace = "/public_html/CollageNotification/" + LastFile;
@@ -181,14 +184,12 @@ public class notificationservice extends Service {
 
                         if (SuccessToDownloadFile) {
                             editor.putInt("CollageNotification", notificationNumberOfCollage + 1);
-                            editor.apply();
                             return PathOnPhone;
                         } else {
                             return null;
                         }
                     }
                 }
-
             } catch (SocketTimeoutException e) {
                 Log.e("TIME_OUT", e.toString());
                 return null;
@@ -201,6 +202,7 @@ public class notificationservice extends Service {
 
         @Override
         protected void onPostExecute(String aVoid) {
+            editor.apply();
             if (Success){
                 String FullPath = "http://inscrutable-sixes.000webhostapp.com/" + subject + File.separator + subtype + File.separator + NameOfFile;
                 String openPath = File.separator + subject + File.separator + subtype + File.separator + NameOfFile;
@@ -208,10 +210,11 @@ public class notificationservice extends Service {
                 counter++;
             }
             if (aVoid != null) {//اضافة
-                notification.notify(getBaseContext(),0,aVoid,null, null,"تم رفع اشعار جديد");
+                notification.notify(getBaseContext(), 0, aVoid, null, null, getString(R.string.newuninoti) + " " + getString(R.string.uplodby) + " (" + username + ")");
             }
         }
     }
+
 
     private class checkTimer extends TimerTask {
         @Override

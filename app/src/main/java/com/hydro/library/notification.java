@@ -46,17 +46,25 @@ class notification {
         // This image is used as the notification's large icon (thumbnail).
         // TODO: Remove this if your notification has no relevant thumbnail.
         final Bitmap picture = BitmapFactory.decodeResource(res, R.drawable.notificationdownload);
+        final String title;
+        if (FileName != null) {
+            title = res.getString(
+                    R.string.notititle);
+        } else {
+            title = res.getString(R.string.notititle) + ": " + res.getString(R.string.dofanoti);
+        }
 
 
 
-        final String title = res.getString(
-                R.string.notititle);
 
         Intent intent = new Intent(context,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("path", FullPath);
         intent.putExtra("FileName", FileName);
         intent.putExtra("openPath", openPath);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,counter, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 
@@ -92,16 +100,16 @@ class notification {
                         // Set the pending intent to be initiated when the user touches
 
                        // the notification.
-                .setContentIntent(
-                        PendingIntent.getActivity(
-                                context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT))
+                .setContentIntent(pendingIntent)
+                .setDeleteIntent(getDeletedIntent(context,counter,FullPath,FileName))
 
-                        // Show expanded text content on devices running Android 4.1 or
+
+                // Show expanded text content on devices running Android 4.1 or
                         // later.
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(exampleString)
                                 .setBigContentTitle(title)
-                                .setSummaryText("Create By Mohand And Gasim"))
+                                .setSummaryText(context.getString(R.string.devby)))
 
 
                                 // Example additional actions for this notification. These will
@@ -115,6 +123,17 @@ class notification {
 
 
         notify(context, builder.build(), counter);
+    }
+
+    protected static PendingIntent getDeletedIntent(Context context, int counter, String path, String FileName) {
+        if (FileName == null) {
+            Intent intent = new Intent(context, NotificationBrodcastRecevie.class);
+            intent.setAction("Canceled");
+            intent.putExtra("FilePath", path);
+            return PendingIntent.getBroadcast(context, counter, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        }
+        else
+            return null;
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
